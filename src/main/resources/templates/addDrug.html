@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>drug</title>
+    <title>add drug</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
@@ -13,9 +13,9 @@
     <p>quantity:* <input type="text" th:field="*{quantity}"/></p>
     <p>description: <input type="text" th:field="*{description}"/></p>
     <p><input type="submit" value="save"/> <input type="reset" value="Reset"/></p>
-    <p><input type="reset" value="show all"/></p>
 </form>
 <form>
+    <button formaction="/drug/list">show all</button>
     <button formaction="/">back</button>
 </form>
 </body>

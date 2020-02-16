@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
+          crossorigin="anonymous">
+    <title>all drugs</title>
+</head>
+<body>
+
+<div class="table-bordered table-responsive " style="margin-top: 30px"
+     xmlns:th="http://www.thymeleaf.org">
+    <table class="table">
+        <thead>
+        <tr>
+            <th> Id</th>
+            <th> firstName</th>
+            <th> lastName</th>
+            <th> gender</th>
+            <th> phoneNumber</th>
+            <th> address</th>
+            <th> prescriptions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${patients.isEmpty()}">
+            <td colspan="2"> No patient Available</td>
+        </tr>
+        <tr th:each="patient : ${patients}">
+            <td><span th:text="${patient.id}"> Id </span></td>
+            <td><span th:text="${patient.firstName}"> firstName </span></td>
+            <td><span th:text="${patient.lastName}"> lastName </span></td>
+            <td><span th:text="${patient.gender}"> gender </span></td>
+            <td><span th:text="${patient.phoneNumber}"> phoneNumber </span></td>
+            <td><span th:text="${patient.address}"> address </span></td>
+            <td><span th:text="${patient.prescriptions}"> prescriptions </span></td>
+            <td><a href="editPatient.html" th:value="${patient.getId()}">edit</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="bootstrap/js/jquery-3.4.1.slim.min.js"
+        crossorigin="anonymous"></script>
+<script src="bootstrap/js/popper.min.js"
+        crossorigin="anonymous"></script>
+<script src="bootstrap/js/bootstrap.min.js"
+        crossorigin="anonymous"></script>
+</body>
+</html>

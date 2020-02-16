@@ -18,13 +18,19 @@ public class DrugController {
     @GetMapping("/save")
     public String sendForm(Model model) {
         model.addAttribute("drug", new Drug());
-        return "drug";
+        return "addDrug";
     }
 
     @PostMapping("/save")
     public String saveBook(@ModelAttribute Drug drug) {
         drugService.saveDrug(drug);
-        return "drug saved";
+        return "drugSaved";
+    }
+
+    @GetMapping("/list")
+    public String showAll(Model model) {
+        model.addAttribute("drugs", drugService.showAllDrugs());
+        return "allDrugs";
     }
 
 }

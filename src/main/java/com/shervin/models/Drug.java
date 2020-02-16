@@ -1,26 +1,26 @@
 package com.shervin.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-
-
+import java.io.Serializable;
 
 @Entity
-public class Drug {
+public class Drug implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false)
     private String name;
+
     @Column(nullable = false)
     private String code;
+
     @Column(nullable = false)
     private Long price;
+
     @Column(nullable = false)
     private Long quantity;
+
     private String description;
 
     public Drug() {
