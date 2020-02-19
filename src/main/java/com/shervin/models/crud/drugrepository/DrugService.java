@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DrugService {
@@ -15,11 +16,11 @@ public class DrugService {
         drugRepository.save(drug);
     }
 
-    public List<Drug> showAllDrugs(){
-       return drugRepository.findAll();
+    public List<Drug> showAllDrugs() {
+        return drugRepository.findAll();
     }
 
-//    public void editDrug(){
-//        Drug drug = drugRepository.findById()
-//    }
+    public Optional<Drug> findDrugById(Long id) {
+        return drugRepository.findById(id);
+    }
 }

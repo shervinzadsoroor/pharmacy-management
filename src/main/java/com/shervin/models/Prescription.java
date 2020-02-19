@@ -2,7 +2,6 @@ package com.shervin.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 public class Prescription implements Serializable {
@@ -14,10 +13,10 @@ public class Prescription implements Serializable {
     private String code;
 
     @Column(nullable = false)
-    private Date issueDate;
+    private String issueDate;
 
     @Column(nullable = false)
-    private Date referralDate;
+    private String referralDate;
 
     @ManyToOne
     private Patient patient;
@@ -41,19 +40,19 @@ public class Prescription implements Serializable {
         this.code = code;
     }
 
-    public Date getIssueDate() {
+    public String getIssueDate() {
         return issueDate;
     }
 
-    public void setIssueDate(Date issueDate) {
+    public void setIssueDate(String issueDate) {
         this.issueDate = issueDate;
     }
 
-    public Date getReferralDate() {
+    public String getReferralDate() {
         return referralDate;
     }
 
-    public void setReferralDate(Date referralDate) {
+    public void setReferralDate(String referralDate) {
         this.referralDate = referralDate;
     }
 
@@ -67,11 +66,6 @@ public class Prescription implements Serializable {
 
     @Override
     public String toString() {
-        return "Prescription{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", issueDate=" + issueDate +
-                ", referralDate=" + referralDate +
-                '}';
+       return String.format("id: %d, code: %s, issue date: %s, referral date: %s\n",id,code,issueDate,referralDate);
     }
 }

@@ -6,44 +6,36 @@
 
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
           crossorigin="anonymous">
-    <title>all drugs</title>
+    <title>all prescriptions</title>
 </head>
 <body>
 
 <div class="table-bordered table-responsive " style="margin-top: 30px"
      xmlns:th="http://www.thymeleaf.org">
-
     <table class="table">
         <thead>
         <tr>
             <th> Id</th>
-            <th> name</th>
-            <th> quantity</th>
-            <th> price</th>
-            <th> description</th>
             <th> code</th>
+            <th> referralDate</th>
+            <th> issueDate</th>
+            <th> patient</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:if="${drugs.isEmpty()}">
-            <td colspan="2"> No drug Available</td>
+        <tr th:if="${prescriptions.isEmpty()}">
+            <td colspan="2"> No prescription Available</td>
         </tr>
-
-        <tr th:each="d : ${drugs}">
-
-            <td><span th:text="${d.id}"> Id </span></td>
-            <td><span th:text="${d.name}"> name </span></td>
-            <td><span th:text="${d.quantity}"> quantity </span></td>
-            <td><span th:text="${d.price}"> price </span></td>
-            <td><span th:text="${d.description}"> description </span></td>
-            <td><span th:text="${d.code}"> code </span></td>
-
-            <td><a th:href="@{/drug/edit/__${d.id}__}">edit</a></td>
-
+        <tr th:each="prescription : ${prescriptions}">
+            <td><span th:text="${prescription.id}"> Id </span></td>
+            <td><span th:text="${prescription.code}"> code </span></td>
+            <td><span th:text="${prescription.referralDate}"> referralDate </span></td>
+            <td><span th:text="${prescription.issueDate}"> issueDate </span></td>
+            <td><span th:object="${prescription.patient}"> patient </span></td>
+            <td><a href="editPrescription.html" th:value="${prescription.getId()}">edit</a></td>
         </tr>
         </tbody>
     </table>
-
 </div>
 
 <script src="bootstrap/js/jquery-3.4.1.slim.min.js"

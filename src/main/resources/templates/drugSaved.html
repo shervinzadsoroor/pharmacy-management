@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>drug saved</title>
 </head>
 <body>
 drug saved
+<table>
+    <thead>
+    <tr>
+        <th>drug name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+<!--        <td><span th:type="${#request.getParameter(drugName)}">drug name</span> </td>-->
+<!--        <td><span th:type="${param.get(drug)}">drug name</span> </td>-->
+    </tr>
+    </tbody>
+</table>
+<!--<h2 th:text="*{drugName}">name</h2>-->
 </body>
 </html>

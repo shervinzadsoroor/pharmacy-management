@@ -1,11 +1,53 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>edit drug</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-edit the drug
-<label th:value=>
+<h1>edit drug</h1>
+<form action="#" id="editForm" th:action="@{/drug/edit}" th:object="${editDrug}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <p>name:* <input type="text" th:field="*{name}"/></p>
+    <p>code:* <input type="text" th:field="*{code}"/></p>
+    <p>price:* <input type="text" th:field="*{price}"/></p>
+    <p>quantity:* <input type="text" th:field="*{quantity}"/></p>
+    <p>description: <input type="text" th:field="*{description}"/></p>
+    <p><input type="submit" value="save"/> <input type="reset" value="Reset"/></p>
+</form>
+<form>
+    <button formaction="/">back</button>
+</form>
+<!--<script>-->
+<!--    function sendJSON() {-->
+
+<!--        let id = document.querySelector('#id');-->
+<!--        let name = document.querySelector('#name');-->
+<!--        let code = document.querySelector('#code');-->
+<!--        let price = document.querySelector('#price');-->
+<!--        let quantity = document.querySelector('#quantity');-->
+<!--        let description = document.querySelector('#description');-->
+
+<!--// Creating a XHR object-->
+<!--        let xhr = new XMLHttpRequest();-->
+<!--        let url = "submit.php";-->
+
+<!--// open a connection-->
+<!--        xhr.open("Put", url, true);-->
+
+<!--// Set the request header i.e. which type of content you are sending-->
+<!--        xhr.setRequestHeader("Content-Type", "application/json");-->
+
+<!--// Converting JSON data to string-->
+<!--        let data = JSON.stringify({-->
+<!--            "id": id.value, "name": name.value, "code": code.value-->
+<!--            , "price": price.value, "quantity": quantity.value, "description": description.value-->
+<!--        });-->
+
+<!--// Sending data with the request-->
+<!--        xhr.send(data);-->
+<!--    }-->
+<!--</script>-->
+
 </body>
 </html>
