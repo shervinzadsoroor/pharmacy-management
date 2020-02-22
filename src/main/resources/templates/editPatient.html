@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>edit patient</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"
+          crossorigin="anonymous" type="text/css">
 </head>
 <body>
-
+<h1>edit patient</h1>
+<form action="#" id="editPatientForm" th:action="@{/patient/edit}" th:object="${editPatient}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <p>first name:* <input type="text" th:field="*{firstName}"/></p>
+    <p>last name:* <input type="text" th:field="*{lastName}"/></p>
+    <p>address:* <input type="text" th:field="*{address}"/></p>
+    <p>phone number:* <input type="text" th:field="*{phoneNumber}"/></p>
+    <p>gender: <input type="text" th:field="*{gender}"/></p>
+    <input type="hidden" th:field="*{prescriptions}"/>
+    <p><input type="submit" value="save"/> <input type="reset" value="Reset"/></p>
+</form>
+<form>
+    <button formaction="/">back</button>
+</form>
 </body>
 </html>

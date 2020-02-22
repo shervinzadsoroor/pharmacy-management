@@ -1,11 +1,14 @@
 package com.shervin.models.crud.prescriptionrepository;
 
+import com.shervin.models.Patient;
 import com.shervin.models.Prescription;
+import com.shervin.models.crud.patientrepository.PatientService;
 import com.shervin.models.crud.prescriptionrepository.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PrescriptionController {
     @Autowired
     private PrescriptionService prescriptionService;
+    @Autowired
+    private PatientService patientService;
 
     @GetMapping("/save")
     public String sendForm(Model model) {
@@ -24,13 +29,33 @@ public class PrescriptionController {
     @PostMapping("/save")
     public String savePrescription(Prescription prescription) {
         prescriptionService.savePrescription(prescription);
-        return "prescriptionSaved";
+        return "index";
+    }
+
+    @GetMapping("/saveToExistingPatientForm/{id}")
+    public String saveToExistingPatient(@PathVariable("id") Long patientId,Model model) {
+        Patient patient = patientService.findById(patientId);
+        Prescription prescription = new Prescription();
+        prescription.setPatient(patient);
+        model.addAttribute("prescription",prescription);
+        return "addPrescription";
     }
 
     @GetMapping("/list")
     public String showAll(Model model) {
-        System.out.println("hello");
         model.addAttribute("prescriptions", prescriptionService.showAllPrescriptions());
         return "allPrescriptions";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editPrescriptionForm(@PathVariable("id")Long presId, Model model){
+        model.addAttribute("prescription",prescriptionService.findById(presId));
+        return "editPrescription";
+    }
+
+    @PostMapping("/edit")
+    public String saveEditedPrescription(Prescription prescription){
+        prescriptionService.savePrescription(prescription);
+        return "index";
     }
 }

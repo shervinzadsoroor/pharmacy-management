@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css"
           crossorigin="anonymous">
     <title>all prescriptions</title>
 </head>
 <body>
+<form>
+    <button formaction="/">home</button>
+</form>
+
 
 <div class="table-bordered table-responsive " style="margin-top: 30px"
      xmlns:th="http://www.thymeleaf.org">
@@ -19,7 +23,7 @@
             <th> code</th>
             <th> referralDate</th>
             <th> issueDate</th>
-            <th> patient</th>
+            <!--            <th> patient</th>-->
         </tr>
         </thead>
         <tbody>
@@ -31,8 +35,8 @@
             <td><span th:text="${prescription.code}"> code </span></td>
             <td><span th:text="${prescription.referralDate}"> referralDate </span></td>
             <td><span th:text="${prescription.issueDate}"> issueDate </span></td>
-            <td><span th:object="${prescription.patient}"> patient </span></td>
-            <td><a href="editPrescription.html" th:value="${prescription.getId()}">edit</a></td>
+            <!--            <td><span th:object="${prescription.patient}"> patient </span></td>-->
+            <td><a th:href="@{/prescription/edit/__${prescription.id}__}">edit</a></td>
         </tr>
         </tbody>
     </table>

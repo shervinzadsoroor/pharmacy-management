@@ -18,4 +18,12 @@ public class PatientService {
     public List<Patient> showAllPatients(){
         return patientRepository.findAll();
     }
+
+    public Patient findById(Long id){
+      return  patientRepository.findById(id).get();
+    }
+
+    public void deletePatient(Long deleteId) {
+        patientRepository.deleteById(deleteId);
+    }
 }

@@ -18,4 +18,8 @@ public class PrescriptionService {
     public List<Prescription> showAllPrescriptions() {
         return prescriptionRepository.findAll();
     }
+
+    public Prescription findById(Long id){
+       return prescriptionRepository.findById(id).get();
+    }
 }

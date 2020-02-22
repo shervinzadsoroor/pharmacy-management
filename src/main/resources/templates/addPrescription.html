@@ -9,8 +9,8 @@
 <form action="#" th:action="@{/prescription/save}" th:object="${prescription}" method="post">
     <p>code:* <input type="text" th:field="*{code}"/></p>
     <p>issueDate:* <input type="text" th:field="*{issueDate}"/></p>
-    <p>referralDate:* <input type="text" th:field="*{referralDate}"/></p>
-    <p>patient:* <input type="text" th:field="*{patient.id}"/></p>
+    <p>referral date:* <input type="text" th:field="*{referralDate}"/></p>
+    <p><input type="hidden" th:field="${prescription.patient}"/></p>
     <p><input type="submit" value="save"/> <input type="reset" value="Reset"/></p>
 </form>
 

@@ -11,9 +11,9 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/drug")
 public class DrugController {
+
     @Autowired
     public DrugService drugService;
-
 
     @GetMapping("/save")
     public String sendForm(Model model) {
@@ -48,5 +48,16 @@ public class DrugController {
         return "index";
     }
 
+    @GetMapping("/deleteConfirm/{id}")
+    public String confirmDelete(@PathVariable("id") Long deleteId, Model model){
+        model.addAttribute("deleteDrug",drugService.findDrugById(deleteId));
+        return "deleteDrug";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteDrug(@PathVariable("id") Long deleteId){
+         drugService.deleteDrug(deleteId);
+         return "index";
+    }
 
 }

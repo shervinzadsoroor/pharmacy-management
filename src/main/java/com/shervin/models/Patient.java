@@ -25,7 +25,7 @@ public class Patient implements Serializable {
 
     private String address;
 
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private Set<Prescription> prescriptions = new HashSet<>();
 
     public Patient() {

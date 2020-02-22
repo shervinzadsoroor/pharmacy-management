@@ -9,7 +9,7 @@
     <title>all patients</title>
 </head>
 <body>
-<h1>Patients</h1>
+<h1>choose a patient to add prescription</h1>
 <div class="table-bordered table-responsive " style="margin-top: 30px">
     <table class="table">
         <thead>
@@ -18,9 +18,7 @@
             <th> firstName</th>
             <th> lastName</th>
             <th> gender</th>
-<!--            <th> phoneNumber</th>-->
-<!--            <th> address</th>-->
-<!--            <th> prescriptions</th>-->
+
         </tr>
         </thead>
         <tbody>
@@ -32,12 +30,9 @@
             <td><span th:text="${patient.firstName}"> firstName </span></td>
             <td><span th:text="${patient.lastName}"> lastName </span></td>
             <td><span th:text="${patient.gender}"> gender </span></td>
-<!--            <td><span th:text="${patient.phoneNumber}"> phoneNumber </span></td>-->
-<!--            <td><span th:text="${patient.address}"> address </span></td>-->
-<!--            <td><span th:text="${patient.prescriptions}"> prescriptions </span></td>-->
-            <td><a th:href="@{/patient/edit/__${patient.id}__}">edit</a></td>
-            <td><a th:href="@{/patient/deleteConfirm/__${patient.id}__}">delete</a></td>
-            <td><a th:href="@{/patient/details/__${patient.id}__}">details</a></td>
+
+            <td><a th:href="@{/prescription/saveToExistingPatientForm/__${patient.id}__}">add prescription</a></td>
+
 
         </tr>
         <form> <button formaction="/">home</button></form>

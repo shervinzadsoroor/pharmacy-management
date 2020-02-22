@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css"
+          crossorigin="anonymous">
+    <title>patient details</title>
+</head>
+<body>
+
+<div class="table-bordered table-responsive " style="margin-top: 30px"
+     xmlns:th="http://www.thymeleaf.org">
+    <table class="table">
+        <thead>
+        <tr>
+            <th> Id</th>
+            <th> firstName</th>
+            <th> lastName</th>
+            <th> gender</th>
+            <th> phoneNumber</th>
+            <th> address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:object="${detailedPatient}">
+            <td><span th:text="*{id}"> Id </span></td>
+            <td><span th:text="*{firstName}"> firstName </span></td>
+            <td><span th:text="*{lastName}"> lastName </span></td>
+            <td><span th:text="*{gender}"> gender </span></td>
+            <td><span th:text="*{phoneNumber}"> phoneNumber </span></td>
+            <td><span th:text="*{address}"> address </span></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- prescriptions -->
+<h1>Descriptions</h1>
+<div class="table-bordered table-responsive " style="margin-top: 30px"
+     xmlns:th="http://www.thymeleaf.org">
+    <table class="table">
+        <thead>
+        <tr>
+            <th> Id</th>
+            <th> code</th>
+            <th> issue date</th>
+            <th> referral date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="prescription : ${detailedPatient.prescriptions}">
+            <td><span th:text="${prescription.id}"> Id </span></td>
+            <td><span th:text="${prescription.code}"> code </span></td>
+            <td><span th:text="${prescription.issueDate}"> issue date </span></td>
+            <td><span th:text="${prescription.referralDate}"> referral date </span></td>
+        </tr>
+        </tbody>
+    </table>
+    <form>
+        <button formaction="/">home page</button>
+    </form>
+</div>
+
+<script src="bootstrap/js/jquery-3.4.1.slim.min.js"
+        crossorigin="anonymous"></script>
+<script src="bootstrap/js/popper.min.js"
+        crossorigin="anonymous"></script>
+<script src="bootstrap/js/bootstrap.min.js"
+        crossorigin="anonymous"></script>
+</body>
+</html>
